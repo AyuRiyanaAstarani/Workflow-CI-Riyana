@@ -1,6 +1,4 @@
-name: churn-model-training
-
-conda_env: conda.yaml
+name: churn-model
 
 entry_points:
   main:
