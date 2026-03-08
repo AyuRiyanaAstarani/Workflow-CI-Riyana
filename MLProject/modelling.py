@@ -11,8 +11,8 @@ mlflow.set_experiment("Churn_Model")
 
 mlflow.sklearn.autolog()
 
-train = pd.read_csv("train_preprocessed.csv")
-test = pd.read_csv("test_preprocessed.csv")
+train = pd.read_csv("dataset_preprocessing/train_preprocessed.csv")
+test = pd.read_csv("dataset_preprocessing/test_preprocessed.csv")
 
 X_train = train.drop("Exited", axis=1)
 y_train = train["Exited"]
