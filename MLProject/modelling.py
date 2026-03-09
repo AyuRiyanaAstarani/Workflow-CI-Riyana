@@ -6,8 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 
-# mlflow.set_experiment("Churn_Model")
-
 mlflow.sklearn.autolog()
 
 train = pd.read_csv("dataset_preprocessing/train_preprocessed.csv")
@@ -20,13 +18,9 @@ X_test = test.drop("Exited", axis=1)
 y_test = test["Exited"]
 
 
-with mlflow.start_run(run_name="RandomForest_Model"):
+with mlflow.start_run():
 
-    model = RandomForestClassifier(
-        n_estimators=100,
-        max_depth=5,
-        random_state=42
-    )
+    model = RandomForestClassifier()
 
     model.fit(X_train, y_train)
 
@@ -37,10 +31,7 @@ with mlflow.start_run(run_name="RandomForest_Model"):
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
 
-    mlflow.log_metric("test_accuracy", acc)
-    mlflow.log_metric("test_precision", precision)
-    mlflow.log_metric("test_recall", recall)
-    mlflow.log_metric("test_f1_score", f1)
-
-    print("Training selesai")
     print("Accuracy:", acc)
+    print("Precision:", precision)
+    print("Recall:", recall)
+    print("F1 Score:", f1)
