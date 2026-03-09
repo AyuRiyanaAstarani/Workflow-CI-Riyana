@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 
-mlflow.set_experiment("Churn_Model")
+# mlflow.set_experiment("Churn_Model")
 
 mlflow.sklearn.autolog()
 
