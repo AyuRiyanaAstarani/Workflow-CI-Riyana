@@ -6,7 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
 mlflow.set_experiment("Churn_Model")
 
 mlflow.sklearn.autolog()
@@ -29,10 +28,8 @@ with mlflow.start_run(run_name="RandomForest_Model"):
         random_state=42
     )
 
-  
     model.fit(X_train, y_train)
 
-    
     y_pred = model.predict(X_test)
 
     acc = accuracy_score(y_test, y_pred)
